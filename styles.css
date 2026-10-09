@@ -357,6 +357,8 @@ tr:hover td { background: var(--accent-soft); }
 }
 .pill.fun  { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
 .pill.punk { color: var(--c-blue); border-color: rgba(95,190,245,0.4); background: rgba(95,190,245,0.08); }
+/* Fun and Punk are site names, so keep their case; all caps is reserved for the FUN and PUNK tokens */
+.pill.fun, .pill.punk { text-transform: none; }
 .pill.soon {
     color: var(--c-purple);
     border-color: rgba(152,92,230,0.45);
@@ -525,13 +527,5 @@ figcaption {
 }
 
 /* ---------- preview banner (preview repo only) ---------- */
-.preview-banner {
-    border: 1px solid rgba(236,151,80,0.45);
-    background: rgba(236,151,80,0.08);
-    color: var(--text);
-    border-radius: 8px;
-    padding: 0.7rem 1rem;
-    margin-bottom: 2rem;
-    font-size: 0.82rem;
-}
+.preview-banner { border: 1px solid rgba(236,151,80,0.45); background: rgba(236,151,80,0.08); color: var(--text); border-radius: 8px; padding: 0.7rem 1rem; margin-bottom: 2rem; font-size: 0.82rem; }
 .preview-banner strong { color: var(--c-orange); }
