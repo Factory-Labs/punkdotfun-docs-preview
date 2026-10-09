@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launch a token | punk.fun docs</title>
+<meta name="description" content="A walkthrough of launching a token on punk.fun: every setting on the launch form, launching in one signature, and how the sale ends.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+<aside class="sidebar">
+    <a href="index.html" style="text-decoration:none">
+        <div class="brand"><span class="punk">punk</span><span class="dot">.</span><span class="fun">fun</span></div>
+    </a>
+    <div class="brand-sub">Documentation</div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="nav-body">
+        <div class="nav-group">
+            <div class="nav-group-title">Start here</div>
+            <a class="nav-link" href="index.html">Overview</a>
+            <a class="nav-link" href="how-it-works.html">How it works</a>
+            <a class="nav-link" href="punk.html">PUNK<span class="soon-tag">Soon</span></a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For buyers</div>
+            <a class="nav-link" href="buy-in-an-auction.html">Buy in an auction</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="refunds.html">When a sale doesn't sell out</a>
+            <a class="nav-link" href="after-the-sale.html">Claiming and after the sale</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For launchers</div>
+            <a class="nav-link" href="launch-a-token.html">Launch a token</a>
+            <a class="nav-link" href="fees.html">Fees and who gets what</a>
+            <a class="nav-link" href="the-pool.html">The pool at sellout</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">Reference</div>
+            <a class="nav-link" href="sale-states.html">Sale states</a>
+            <a class="nav-link" href="glossary.html">Glossary</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
+        </div>
+    </div>
+</aside>
+
+<main class="content">
+<div class="preview-banner"><strong>Preview.</strong> These docs describe how punk.fun works with its latest contracts, including some features that aren't in the app yet. The live docs are at <a href="https://factory-labs.github.io/punkdotfun-docs/">factory-labs.github.io/punkdotfun-docs</a>.</div>
+
+<div class="eyebrow">Guide &middot; For launchers</div>
+    <h1>Launch a token</h1>
+    <p class="lead">This is the full walkthrough for launching, from filling in the form to the market going live. Most of it happens automatically.</p>
+
+    <h2>Before you start</h2>
+    <p>You need a wallet with a little ETH for gas. That's it. The launch form makes the token for you. If there's a fee for creating a token it's shown at the top of the form before you sign. On the alpha, launching is free apart from gas.</p>
+
+    <h2>Step 1: Your token</h2>
+    <figure class="shot">
+        <img src="img/launch-details.webp" alt="The token details section of the launch form: name, ticker, fixed supply of 1,000,000,000, description, X account and image" loading="lazy">
+        <figcaption>The top of the launch form. Supply is fixed at 1 billion, so there's nothing to choose there.</figcaption>
+    </figure>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>Field</th><th>What it's for</th></tr></thead>
+        <tbody>
+            <tr><td>Name and ticker</td><td>Required. How your token shows up everywhere.</td></tr>
+            <tr><td>Number of tokens</td><td>Fixed at 1 billion. Half is sold in the auction and half backs the pool.</td></tr>
+            <tr><td>Description</td><td>Optional. Stored off-chain and shown on your sale page.</td></tr>
+            <tr><td>Project X account</td><td>Optional. Log in with X to prove you own the account, and buyers see it marked as verified on the sale page.</td></tr>
+            <tr><td>Token image</td><td>Optional. PNG, JPG or GIF up to 4MB.</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2>Step 2: Sale settings</h2>
+    <figure class="shot">
+        <img src="img/launch-sale-settings.webp" alt="The sale settings section: sale start, opening price, sale length with 1 day, 1 week and 30 days buttons, and the amount the sale must raise" loading="lazy">
+        <figcaption>Sale settings. The box under the sale length tells you how much ETH your sale has to raise to sell out.</figcaption>
+    </figure>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>Setting</th><th>What it controls</th></tr></thead>
+        <tbody>
+            <tr><td>Sale start</td><td>How many blocks from now buying opens. Leave it blank to open as soon as the launch lands. A delay lets you announce the sale in advance.</td></tr>
+            <tr><td>Opening price</td><td>The price per token at the start of the first batch, in ETH.</td></tr>
+            <tr><td>Sale length</td><td>Between 1 and 30 days, set in blocks. There are buttons for 1 day, 1 week and 30 days. If the sale hasn't sold out by then, every buyer is refunded.</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="callout warn">
+        <span class="callout-label">Check what your sale has to raise</span>
+        <p>The form shows how much ETH the sale must raise to sell out, and how much of that is the last batch. At the default settings that's about 169 ETH across 10 batches, with 74% in the last one. Anything less than a full sellout refunds every buyer, so set a target your community can actually reach.</p>
+    </div>
+
+    <h2>Step 3: Advanced settings</h2>
+    <p>These are filled in with the defaults. You only need to open them if you want a different shape of sale.</p>
+    <figure class="shot">
+        <img src="img/launch-advanced.webp" alt="The advanced configuration section with first batch size, minimum price, price decay, batch size growth, batch price growth, decay growth and launch price multiplier" loading="lazy">
+        <figcaption>Advanced settings, filled in with the defaults. Each one shows its allowed range underneath. The creator fee field isn't in the form yet.</figcaption>
+    </figure>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>Setting</th><th>What it controls</th><th>Default</th></tr></thead>
+        <tbody>
+            <tr><td>First batch size</td><td>How many tokens are in the first batch.</td><td>500,000</td></tr>
+            <tr><td>Minimum price</td><td>The floor. Decay can never take the price below this, and it can't be above your opening price.</td><td>Same as the opening price</td></tr>
+            <tr><td>Price decay</td><td>How much the price drops each block inside a batch while nobody buys. Zero keeps it flat.</td><td>0</td></tr>
+            <tr><td>Batch size growth</td><td>How many times bigger each batch is than the last. 0.5x to 3x.</td><td>2x</td></tr>
+            <tr><td>Batch price growth</td><td>Each batch's opening price as a multiple of the average price paid in the batch before. Never below the minimum price. 0.5x to 3x.</td><td>2x</td></tr>
+            <tr><td>Decay growth</td><td>How the decay rate changes from batch to batch. Only matters if decay is above zero. 0.5x to 3x.</td><td>2x</td></tr>
+            <tr><td>Creator fee</td><td>Your share of the liquidity reserve, paid in tokens at sellout. 0% to 20% of the reserve, which is 0% to 10% of supply. See <a href="fees.html">Fees and who gets what</a>.</td><td>Set by you</td></tr>
+            <tr><td>Launch price multiplier</td><td>Opens the trading pool above the average sale price by putting fewer tokens in and burning the rest. 1x to 3x. See <a href="the-pool.html">The pool at sellout</a>.</td><td>1x, burns nothing</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h3>Choosing your creator fee</h3>
+    <p>Your creator fee comes out of the pool's half of the supply. Taking more gives you more tokens and also lifts the price trading opens at, but leaves fewer tokens in the pool.</p>
+    <figure class="diagram">
+        <img src="img/diagram-creator-fee.svg" alt="Creator fee at 0, 5, 10 and 20 percent of the reserve: 0, 25, 50 and 100 million tokens to the launcher, and the pool opens at 0.95, 1.00, 1.06 and 1.19 times the average price.">
+    </figure>
+
+    <div class="callout tip">
+        <span class="callout-label">What you don't control</span>
+        <p>The platform fee, the 50/50 split, the 1 billion supply and where the liquidity goes are all fixed by the protocol. That's deliberate: buyers can rely on those being the same for every launch.</p>
+    </div>
+
+    <h2>Step 4: Launch</h2>
+    <figure class="shot">
+        <img src="img/launch-submit.webp" alt="The Launch Token button with the estimated network fee, and a note that the wallet signs the whole launch once" loading="lazy">
+        <figcaption>If your wallet can batch transactions, you sign the whole launch once.</figcaption>
+    </figure>
+    <p>Press <strong>Launch Token</strong>. If your wallet can batch transactions, you sign once and that one signature creates your token, creates the sale, funds it with the full supply and opens it.</p>
+    <p>If your wallet can't batch, the launch takes four confirmations instead. If one gets interrupted, come back to the form and you can pick up where you left off. Until you finish, the sale shows as <strong>NOT FUNDED</strong> and nobody can buy.</p>
+    <p>If you set a start in the future, the sale shows as <strong>SOON</strong> until buying opens.</p>
+
+    <h2>While the sale runs</h2>
+    <p>There's nothing for you to do. Buyers commit, batches roll over, and the price follows the rules you set. You can watch progress on your sale page. You hold no tokens while the sale runs, and if you buy in your own sale you pay the same price as everyone else.</p>
+
+    <h2>How it ends</h2>
+    <p>If the sale sells out, the pool is created in the same transaction as the final buy and buyers can claim. You receive your creator fee in tokens at that point. You don't receive any ETH from the sale: it all goes into the pool apart from the platform's 5%. See <a href="fees.html">Fees and who gets what</a>.</p>
+    <p>If the sale doesn't sell out by its deadline, buying stops and everyone is refunded in full. No pool is created and no fees are taken.</p>
+
+    <div class="callout warn">
+        <span class="callout-label">Reality check</span>
+        <p>A launch needs demand. punk.fun gives you fair mechanics and an automatic market, but it can't find buyers for you. A sale that doesn't sell out refunds everyone and leaves you where you started, minus gas. Line up your community before you launch.</p>
+    </div>
+
+    <div class="page-nav">
+        <a href="after-the-sale.html">
+            <span class="dir">Previous</span>
+            <span class="ttl">&larr; Claiming and after the sale</span>
+        </a>
+        <a class="next" href="fees.html">
+            <span class="dir">Next</span>
+            <span class="ttl">Fees and who gets what &rarr;</span>
+        </a>
+    </div>
+
+    <footer>
+        punk.fun documentation &middot; <a href="https://punk.fun">punk.fun</a> &middot; Screenshots are from the punk.fun alpha on a test network, so the names and numbers in them are test data.
+    </footer>
+</main>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

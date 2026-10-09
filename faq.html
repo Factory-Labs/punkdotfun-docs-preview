@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | punk.fun docs</title>
+<meta name="description" content="Answers to common questions about punk.fun: buying, launching, fees, refunds and risk.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+<aside class="sidebar">
+    <a href="index.html" style="text-decoration:none">
+        <div class="brand"><span class="punk">punk</span><span class="dot">.</span><span class="fun">fun</span></div>
+    </a>
+    <div class="brand-sub">Documentation</div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="nav-body">
+        <div class="nav-group">
+            <div class="nav-group-title">Start here</div>
+            <a class="nav-link" href="index.html">Overview</a>
+            <a class="nav-link" href="how-it-works.html">How it works</a>
+            <a class="nav-link" href="punk.html">PUNK<span class="soon-tag">Soon</span></a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For buyers</div>
+            <a class="nav-link" href="buy-in-an-auction.html">Buy in an auction</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="refunds.html">When a sale doesn't sell out</a>
+            <a class="nav-link" href="after-the-sale.html">Claiming and after the sale</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For launchers</div>
+            <a class="nav-link" href="launch-a-token.html">Launch a token</a>
+            <a class="nav-link" href="fees.html">Fees and who gets what</a>
+            <a class="nav-link" href="the-pool.html">The pool at sellout</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">Reference</div>
+            <a class="nav-link" href="sale-states.html">Sale states</a>
+            <a class="nav-link" href="glossary.html">Glossary</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
+        </div>
+    </div>
+</aside>
+
+<main class="content">
+<div class="preview-banner"><strong>Preview.</strong> These docs describe how punk.fun works with its latest contracts, including some features that aren't in the app yet. The live docs are at <a href="https://factory-labs.github.io/punkdotfun-docs/">factory-labs.github.io/punkdotfun-docs</a>.</div>
+
+<div class="eyebrow">Reference</div>
+    <h1>FAQ</h1>
+    <p class="lead">Quick answers to the questions people ask most.</p>
+
+    <h2>General</h2>
+    <details>
+        <summary>What is punk.fun in one sentence?</summary>
+        <div class="faq-body"><p>A token launchpad that sells half a token's supply in a batched auction and turns the proceeds into a live market, or refunds everyone if it doesn't sell out.</p></div>
+    </details>
+    <details>
+        <summary>Do I need to understand smart contracts?</summary>
+        <div class="faq-body"><p>No. You use the app and the contracts handle the rest.</p></div>
+    </details>
+    <details>
+        <summary>What's PUNK?</summary>
+        <div class="faq-body"><p>The analytical side of punk.fun. It's coming soon. Everything live today is FUN. See <a href="punk.html">PUNK</a>.</p></div>
+    </details>
+
+    <h2>For buyers</h2>
+    <details>
+        <summary>Why didn't I get my tokens straight away?</summary>
+        <div class="faq-body"><p>Buying commits ETH and locks in your share. You claim the tokens once the sale sells out. It works the same for everyone.</p></div>
+    </details>
+    <details>
+        <summary>Why does the price keep changing?</summary>
+        <div class="faq-body"><p>Each batch opens at a new, usually higher price, and inside a batch the price can drift down if the launcher set a decay. See <a href="pricing.html">Pricing</a>.</p></div>
+    </details>
+    <details>
+        <summary>Can I end up paying more than I expected?</summary>
+        <div class="faq-body"><p>Not by default. Your buy is capped at the open batch's price, so if the batch sells out before your buy lands, it's refused instead. If you tick Buy at any price, it fills at whatever the next batch costs.</p></div>
+    </details>
+    <details>
+        <summary>What if I buy more than a batch has left?</summary>
+        <div class="faq-body"><p>You get what's left of the batch and the extra ETH comes straight back in the same transaction.</p></div>
+    </details>
+    <details>
+        <summary>What happens if the sale never sells out?</summary>
+        <div class="faq-body"><p>After the deadline, every buyer withdraws exactly the ETH they paid. There's no time limit on withdrawing, and no pool is created. See <a href="refunds.html">When a sale doesn't sell out</a>.</p></div>
+    </details>
+    <details>
+        <summary>Can I get a refund after a sale sells out?</summary>
+        <div class="faq-body"><p>No. Once it sells out the ETH goes into the pool. Refunds only exist for sales that miss their deadline.</p></div>
+    </details>
+    <details>
+        <summary>How long does a sale run?</summary>
+        <div class="faq-body"><p>Between 1 and 30 days, set by the launcher, or until it sells out if that's sooner.</p></div>
+    </details>
+    <details>
+        <summary>What price does trading open at?</summary>
+        <div class="faq-body"><p>Roughly the average price paid across the whole sale. The creator fee nudges it a little either way, and a launch price multiplier lifts it. Later batches pay more than the average, so they can start below what they paid. See <a href="the-pool.html">The pool at sellout</a>.</p></div>
+    </details>
+    <details>
+        <summary>Why am I getting ETH back after a sale sold out?</summary>
+        <div class="faq-body"><p>Everyone in a batch pays the price the batch sold out at. If you bought earlier in the batch at a higher price, you keep your tokens and get the difference back. See <a href="pricing.html#one-price">Pricing</a>.</p></div>
+    </details>
+    <details>
+        <summary>Is there a deadline to claim?</summary>
+        <div class="faq-body"><p>No.</p></div>
+    </details>
+    <details>
+        <summary>Where can I see everything I'm owed?</summary>
+        <div class="faq-body"><p>Your Profile page lists anything you can claim or withdraw, plus your open positions in live sales.</p></div>
+    </details>
+
+    <h2>For launchers</h2>
+    <details>
+        <summary>How much of my token gets sold?</summary>
+        <div class="faq-body"><p>Half. The other half seeds the pool, minus your creator fee.</p></div>
+    </details>
+    <details>
+        <summary>Do I set the fees or where the liquidity goes?</summary>
+        <div class="faq-body"><p>You set your creator fee, between 0% and 20% of the liquidity reserve. The platform fee, the 50/50 split and where the liquidity goes are fixed by the protocol. You also set the sale rules: price, batch sizes, decay, length, start and the launch price multiplier.</p></div>
+    </details>
+    <details>
+        <summary>What do I get?</summary>
+        <div class="faq-body"><p>Your creator fee, in tokens, when the sale sells out. You don't receive ETH from the sale.</p></div>
+    </details>
+    <details>
+        <summary>Can I sell my creator fee tokens?</summary>
+        <div class="faq-body"><p>Yes, once you've received it. Buyers can see the creator fee on every sale page before they buy.</p></div>
+    </details>
+    <details>
+        <summary>How many transactions does launching take?</summary>
+        <div class="faq-body"><p>One signature if your wallet can batch transactions. Otherwise four confirmations, and you can pick up where you left off if one is interrupted.</p></div>
+    </details>
+    <details>
+        <summary>What if my sale doesn't sell out?</summary>
+        <div class="faq-body"><p>Buyers are refunded in full, no pool is created and no fees are taken.</p></div>
+    </details>
+    <details>
+        <summary>Can the supply be inflated after launch?</summary>
+        <div class="faq-body"><p>No. The token has a fixed supply with no mint function and no owner. The supply can only go down, if you set a launch price multiplier above 1x.</p></div>
+    </details>
+
+    <h2>Fees, risk and safety</h2>
+    <details>
+        <summary>What fees are there?</summary>
+        <div class="faq-body"><p>5% of the ETH the sale keeps goes to the platform, and the launcher's creator fee, between 0% and 10% of supply, is paid in tokens. Both are only taken at sellout. There may be a fee for creating a token, shown before you sign. Gas applies as usual. See <a href="fees.html">Fees and who gets what</a>.</p></div>
+    </details>
+    <details>
+        <summary>Who controls the liquidity after the sale?</summary>
+        <div class="faq-body"><p>Nobody. The LP tokens go to a dead address, so the liquidity can't be withdrawn.</p></div>
+    </details>
+    <details>
+        <summary>Is buying a newly launched token safe?</summary>
+        <div class="faq-body"><p>No token launch is safe. New tokens are volatile, and trading opens at roughly the sale's average price, so a late batch can be down straight away. punk.fun makes the mechanics fair and visible. It can't make a token a good investment.</p></div>
+    </details>
+
+    <div class="page-nav">
+        <a href="glossary.html">
+            <span class="dir">Previous</span>
+            <span class="ttl">&larr; Glossary</span>
+        </a>
+        <span></span>
+    </div>
+
+    <footer>
+        punk.fun documentation &middot; <a href="https://punk.fun">punk.fun</a> &middot; Screenshots are from the punk.fun alpha on a test network, so the names and numbers in them are test data.
+    </footer>
+</main>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

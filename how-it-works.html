@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How it works | punk.fun docs</title>
+<meta name="description" content="The full life of a punk.fun launch: creating the token, the 50/50 split, the batched auction, and the two ways a sale ends.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+<aside class="sidebar">
+    <a href="index.html" style="text-decoration:none">
+        <div class="brand"><span class="punk">punk</span><span class="dot">.</span><span class="fun">fun</span></div>
+    </a>
+    <div class="brand-sub">Documentation</div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="nav-body">
+        <div class="nav-group">
+            <div class="nav-group-title">Start here</div>
+            <a class="nav-link" href="index.html">Overview</a>
+            <a class="nav-link" href="how-it-works.html">How it works</a>
+            <a class="nav-link" href="punk.html">PUNK<span class="soon-tag">Soon</span></a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For buyers</div>
+            <a class="nav-link" href="buy-in-an-auction.html">Buy in an auction</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="refunds.html">When a sale doesn't sell out</a>
+            <a class="nav-link" href="after-the-sale.html">Claiming and after the sale</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For launchers</div>
+            <a class="nav-link" href="launch-a-token.html">Launch a token</a>
+            <a class="nav-link" href="fees.html">Fees and who gets what</a>
+            <a class="nav-link" href="the-pool.html">The pool at sellout</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">Reference</div>
+            <a class="nav-link" href="sale-states.html">Sale states</a>
+            <a class="nav-link" href="glossary.html">Glossary</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
+        </div>
+    </div>
+</aside>
+
+<main class="content">
+<div class="preview-banner"><strong>Preview.</strong> These docs describe how punk.fun works with its latest contracts, including some features that aren't in the app yet. The live docs are at <a href="https://factory-labs.github.io/punkdotfun-docs/">factory-labs.github.io/punkdotfun-docs</a>.</div>
+
+<div class="eyebrow">Start here</div>
+    <h1>How it works</h1>
+    <p class="lead">Every launch follows the same path. A token is created, half of it is sold in a batched auction, and the sale ends in one of two ways. Here's each stage.</p>
+
+    <figure class="diagram">
+        <img src="img/diagram-lifecycle.svg" alt="Create, fund, auction, then either sell out or refund.">
+    </figure>
+
+    <h2>Stage 1: Creating the token</h2>
+    <p>The launcher gives the token a name and a ticker and, if they want, an image, a description and a linked X account. Supply is always 1 billion. Nobody chooses it.</p>
+    <p>The token has no owner and no admin switch, and no more can ever be minted.</p>
+
+    <div class="callout tip">
+        <span class="callout-label">Why fixed supply matters</span>
+        <p>Because no more tokens can be minted, the supply you see is the supply that exists. There's no hidden dilution from the token itself.</p>
+    </div>
+
+    <h2>Stage 2: Funding and the 50/50 split</h2>
+    <p>The sale has to hold the whole 1 billion before it can open. Once it does, the supply splits into two fixed halves.</p>
+
+    <figure class="diagram">
+        <img src="img/diagram-supply.svg" alt="500 million sold in the auction. 500 million held back as the liquidity reserve. The launcher sets a creator fee of 0% to 20% of the reserve and the rest goes into the pool.">
+    </figure>
+
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>Half</th><th>What it's for</th></tr></thead>
+        <tbody>
+            <tr><td>Sale allocation (500M)</td><td>The tokens sold to buyers in the auction.</td></tr>
+            <tr><td>Liquidity reserve (500M)</td><td>Held back to seed the trading pool if the sale sells out. The launcher's creator fee comes out of this half.</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>The split is automatic and can't be changed. It's why a market exists at the end: half the tokens were always set aside to build it.</p>
+
+    <h2>Stage 3: The auction</h2>
+    <p>The sale runs in batches, which the app also calls tranches. Each batch has a size and an opening price. When one sells out the next opens, usually bigger and at a higher price. If the launcher has set a price decay, the price also drifts down inside a batch, block by block, towards a floor.</p>
+    <p>Everyone in a batch ends up paying the same price: the price it sold out at. If you bought earlier in the batch at a higher price, you keep your tokens and get the difference back in ETH once the sale sells out.</p>
+    <p><a href="pricing.html">Pricing</a> covers the settings and what to expect as a buyer.</p>
+
+    <figure class="shot wide">
+        <img src="img/sale-live-overview.webp" alt="A live sale page showing the token, current price, auction progress, the batch chart and the Buy Tokens panel" loading="lazy">
+        <figcaption>A live sale. The chart shows each batch, the progress bar shows how much of the 500M has been bought, and you buy from the panel on the right.</figcaption>
+    </figure>
+
+    <div class="callout">
+        <span class="callout-label">Commit now, collect later</span>
+        <p>When you buy, you don't get tokens straight away. You commit ETH and lock in your share, then claim your tokens once the sale has sold out. It works the same way for everyone.</p>
+    </div>
+
+    <h2>Stage 4: How a sale ends</h2>
+    <p>There are two endings, and only two.</p>
+    <h3>It sells out</h3>
+    <p>The buy that takes the last token does everything else in the same transaction. Fees are taken, the remaining ETH and reserve tokens are paired in a Uniswap pool, the pool's LP tokens are sent to a dead address, and claims open. There's no separate settlement step to wait for and nothing for anyone to press.</p>
+    <h3>It runs out of time</h3>
+    <p>Every sale has a deadline, set at launch between 1 and 30 days. If it hasn't sold out by then, buying stops and every buyer can withdraw exactly the ETH they paid. No pool is created. <a href="refunds.html">When a sale doesn't sell out</a> has the detail.</p>
+
+    <div class="callout">
+        <span class="callout-label">If the pool can't be created</span>
+        <p>Settlement runs inside that final buy. If it can't finish for any reason, the whole buy is rejected rather than half-applied, so a sale can't get stuck between sold out and settled.</p>
+    </div>
+
+    <h2>Stage 5: A live market</h2>
+    <p>After a sellout the token has a real trading pool behind it. Nobody holds the LP tokens, so nobody can pull the liquidity, including the launcher. Buyers claim their tokens and can trade from then on.</p>
+
+    <h2>Recap</h2>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>Stage</th><th>Result</th></tr></thead>
+        <tbody>
+            <tr><td>Create</td><td>A token exists with a fixed supply of 1 billion</td></tr>
+            <tr><td>Fund</td><td>Supply split 50/50 into the sale and the reserve</td></tr>
+            <tr><td>Auction</td><td>Buyers commit ETH batch by batch</td></tr>
+            <tr><td>Sells out</td><td>Pool created in the final buy, claims open</td></tr>
+            <tr><td>Deadline passes unsold</td><td>Buying stops, everyone takes back what they paid, no pool</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="page-nav">
+        <a href="index.html">
+            <span class="dir">Previous</span>
+            <span class="ttl">&larr; Overview</span>
+        </a>
+        <a class="next" href="punk.html">
+            <span class="dir">Next</span>
+            <span class="ttl">PUNK &rarr;</span>
+        </a>
+    </div>
+
+    <footer>
+        punk.fun documentation &middot; <a href="https://punk.fun">punk.fun</a> &middot; Screenshots are from the punk.fun alpha on a test network, so the names and numbers in them are test data.
+    </footer>
+</main>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

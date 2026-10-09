@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claiming and after the sale | punk.fun docs</title>
+<meta name="description" content="What happens when a punk.fun sale sells out: fees, the Uniswap pool, burned liquidity, and claiming your tokens.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+<aside class="sidebar">
+    <a href="index.html" style="text-decoration:none">
+        <div class="brand"><span class="punk">punk</span><span class="dot">.</span><span class="fun">fun</span></div>
+    </a>
+    <div class="brand-sub">Documentation</div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="nav-body">
+        <div class="nav-group">
+            <div class="nav-group-title">Start here</div>
+            <a class="nav-link" href="index.html">Overview</a>
+            <a class="nav-link" href="how-it-works.html">How it works</a>
+            <a class="nav-link" href="punk.html">PUNK<span class="soon-tag">Soon</span></a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For buyers</div>
+            <a class="nav-link" href="buy-in-an-auction.html">Buy in an auction</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="refunds.html">When a sale doesn't sell out</a>
+            <a class="nav-link" href="after-the-sale.html">Claiming and after the sale</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">For launchers</div>
+            <a class="nav-link" href="launch-a-token.html">Launch a token</a>
+            <a class="nav-link" href="fees.html">Fees and who gets what</a>
+            <a class="nav-link" href="the-pool.html">The pool at sellout</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-group-title">Reference</div>
+            <a class="nav-link" href="sale-states.html">Sale states</a>
+            <a class="nav-link" href="glossary.html">Glossary</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
+        </div>
+    </div>
+</aside>
+
+<main class="content">
+<div class="preview-banner"><strong>Preview.</strong> These docs describe how punk.fun works with its latest contracts, including some features that aren't in the app yet. The live docs are at <a href="https://factory-labs.github.io/punkdotfun-docs/">factory-labs.github.io/punkdotfun-docs</a>.</div>
+
+<div class="eyebrow">Guide &middot; For buyers</div>
+    <h1>Claiming and after the sale</h1>
+    <p class="lead">When a sale sells out, everything below happens inside that final buy. Nobody has to press anything except to claim their own tokens.</p>
+
+    <ol class="steps">
+        <li><strong>Price differences are set aside</strong>ETH owed back to buyers who paid more than their batch's final price is held for them to collect.</li>
+        <li><strong>Fees are taken</strong>5% of the remaining ETH goes to the platform, and the launcher's creator fee is paid in reserve tokens.</li>
+        <li><strong>The pool is seeded</strong>The remaining ETH and reserve tokens are paired in a Uniswap pool.</li>
+        <li><strong>The liquidity is locked for good</strong>The pool's LP tokens are sent to a dead address that nobody controls, so the liquidity can never be withdrawn.</li>
+        <li><strong>Claims open</strong>Buyers can collect their tokens, and any ETH they're owed back.</li>
+    </ol>
+
+    <figure class="shot wide">
+        <img src="img/sale-soldout.webp" alt="A sold-out sale marked CLAIM, with all four batches filled, a Claim Your Tokens panel and a Trade on Uniswap button" loading="lazy">
+        <figcaption>A sold-out sale. Every batch has filled, the claim panel is open, and there's a link to trade the token on Uniswap.</figcaption>
+    </figure>
+
+    <h2>Claiming</h2>
+    <figure class="shot narrow">
+        <img src="img/claim-panel.webp" alt="The Claim Your Tokens panel showing 150,000,000 DINGO claimable and a Claim button" loading="lazy">
+        <figcaption>One press claims everything you're owed.</figcaption>
+    </figure>
+    <p>One transaction claims all your tokens. There's no deadline.</p>
+
+    <h2>Collecting ETH back</h2>
+    <p>If you paid more than your batch's final price, which only happens when a sale has price decay, you're owed the difference in ETH. You collect it with its own transaction, separate from claiming your tokens. There's no deadline for this either. <a href="pricing.html#one-price">Pricing</a> explains how it's worked out.</p>
+
+    <figure class="diagram">
+        <img src="img/diagram-collect.svg" alt="If a sale sells out you claim your tokens and, if you paid above your batch's final price, collect ETH back in a separate transaction. If it misses its deadline you withdraw a full refund instead. Never both.">
+        <figcaption>Collecting ETH back isn't in the app yet, so there's no screenshot of it here.</figcaption>
+    </figure>
+    <p>Your <strong>Profile</strong> page lists everything you can claim or withdraw across all sales, plus your open positions in live ones.</p>
+
+    <figure class="shot wide">
+        <img src="img/profile.webp" alt="The Profile page showing claimable items, open positions and your launches" loading="lazy">
+        <figcaption>Your Profile page, with anything claimable or refundable at the top.</figcaption>
+    </figure>
+
+    <h2>Trading</h2>
+    <p>Once you've claimed, you can trade the token in its Uniswap pool. The sale page has a <strong>Trade on Uniswap</strong> button that takes you there. Trading opens at roughly the average price paid across the sale, not the last batch's price. <a href="the-pool.html">The pool at sellout</a> explains what that means for you.</p>
+
+    <h2>The liquidity</h2>
+    <p>No one holds the pool position: not the launcher, not punk.fun. It can't be withdrawn, staked or moved, and there are no rewards attached to it.</p>
+
+    <div class="callout">
+        <span class="callout-label">What "unruggable" covers</span>
+        <p>It means the pool's liquidity can't be pulled. It doesn't mean the price can't fall. Anyone holding tokens can sell them into the pool, including the launcher with their creator fee.</p>
+    </div>
+
+    <h2>What "done" looks like</h2>
+    <ul>
+        <li>The token has a live pool and anyone can trade it.</li>
+        <li>Buyers can claim whenever they like, then trade.</li>
+        <li>The launcher has nothing left to do.</li>
+    </ul>
+
+    <div class="page-nav">
+        <a href="refunds.html">
+            <span class="dir">Previous</span>
+            <span class="ttl">&larr; When a sale doesn't sell out</span>
+        </a>
+        <a class="next" href="launch-a-token.html">
+            <span class="dir">Next</span>
+            <span class="ttl">Launch a token &rarr;</span>
+        </a>
+    </div>
+
+    <footer>
+        punk.fun documentation &middot; <a href="https://punk.fun">punk.fun</a> &middot; Screenshots are from the punk.fun alpha on a test network, so the names and numbers in them are test data.
+    </footer>
+</main>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
